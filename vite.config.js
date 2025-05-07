@@ -7,7 +7,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 			'/music': {
-				target: import.meta.env.VITE_SERVER_HOSTy,
+				target: 'http://lofimusic.click/admin/',
 				changeOrigin: true,
 				// rewrite: (path) => path.replace(/^\/music/, '/admin/music'),
 			},

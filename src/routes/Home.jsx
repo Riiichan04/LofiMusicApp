@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <>
             <Header/>
-            <MusicComponent index={2} />
+            <MusicComponent />
         </>
     )
 }

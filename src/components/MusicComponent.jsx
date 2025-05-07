@@ -3,12 +3,18 @@ import { getMusicInfo } from "../api/musicGetter"
 import '../styles/music-component.css'
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import CircularProgress from '@mui/material/CircularProgress';
+import { buttonStyle } from "../themes/componentStyling";
 
 const MusicComponent = ({ index }) => {
+    //TODO: Get total music data from father component
+    //Just for demo
+    const [totalMusic, setTotalMusic] = useState(0)
     const [isStart, setIsStart] = useState(false)
     const [currentMusic, setCurrentMusic] = useState(null) //Contain current music detail
-    const musicIndex = index || 0
+    const [musicIndex, setMusicIndex] = useState(index || 0)
     const audioRef = useRef(null)
 
     //Asynchronous template for fetching API in React   
@@ -16,12 +22,13 @@ const MusicComponent = ({ index }) => {
         //Set an async function inside useEffect
         const fetchMusicData = async () => {
             const musicData = await getMusicInfo()
+            setTotalMusic(musicData.length)
             setCurrentMusic(musicData[musicIndex]);
         }
-
+        console.log(musicIndex)
         //Call it inside useEffect
         fetchMusicData()
-    }, [musicIndex])
+    }, [musicIndex])    //useEffect only rerun when musicIndex change
 
     const toggleButton = () => {
         const audio = audioRef.current
@@ -30,7 +37,17 @@ const MusicComponent = ({ index }) => {
         setIsStart(!isStart)
     }
 
-    return (   
+    const nextMusic = () => {
+        //Temp code
+        if (musicIndex < totalMusic - 1) setMusicIndex(musicIndex + 1)
+    }
+
+    const prevMusic = () => {
+        //Temp code
+        if (musicIndex > 0) setMusicIndex(musicIndex - 1)
+    }
+
+    return (
         <div className="music-bottom-component">
             {currentMusic ? (
                 <>
@@ -42,16 +59,22 @@ const MusicComponent = ({ index }) => {
                         <p>{currentMusic.artist}</p>
                     </div>
                     <audio ref={audioRef} src={currentMusic.urlMusic}></audio>
-                    <div>
+                    <div style={{ display: "flex" }}>
+                        <div id="prev-button">
+                            <SkipPreviousIcon onClick={prevMusic} sx={buttonStyle} />
+                        </div>
                         <div id="play-button">
                             {isStart ?
-                                <PauseIcon onClick={toggleButton} sx={{ "color": "var(--text-color)", "fontSize": "var(--h2)" }} /> :
-                                <PlayArrowIcon onClick={toggleButton} sx={{ "color": "var(--text-color)", "fontSize": "var(--h2)" }} />
+                                <PauseIcon onClick={toggleButton} sx={buttonStyle} /> :
+                                <PlayArrowIcon onClick={toggleButton} sx={buttonStyle} />
                             }
+                        </div>
+                        <div id="next-button">
+                            <SkipNextIcon onClick={nextMusic} sx={buttonStyle} />
                         </div>
                     </div>
                 </>
-            ) : <CircularProgress/>}
+            ) : <CircularProgress />}
         </div>
     )
 }

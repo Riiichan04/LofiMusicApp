@@ -7,7 +7,7 @@ import axios from "axios";
  */
 async function getMusicInfo() {
     // const response = await axios.get(import.meta.env.VITE_SERVER_HOST)
-    const response = await axios.get("/music/all")
+    const response = await axios.get("https://lofimusic.click/admin/music/all")
     return response.data
 }
 
