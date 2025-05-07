@@ -5,12 +5,17 @@ import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import Stack from '@mui/material/Stack';
+import Slider from '@mui/material/Slider';
+import VolumeDown from '@mui/icons-material/VolumeDown';
+import VolumeUp from '@mui/icons-material/VolumeUp';
 import CircularProgress from '@mui/material/CircularProgress';
-import { buttonStyle } from "../themes/componentStyling";
+import { buttonStyle, smallButtonStyle } from "../themes/componentStyling";
 
 const MusicComponent = ({ index }) => {
     //TODO: Get total music data from father component
     //Just for demo
+    const [volume, setVolume] = useState(0.5)
     const [totalMusic, setTotalMusic] = useState(0)
     const [isStart, setIsStart] = useState(false)
     const [currentMusic, setCurrentMusic] = useState(null) //Contain current music detail
@@ -47,13 +52,19 @@ const MusicComponent = ({ index }) => {
         if (musicIndex > 0) setMusicIndex(musicIndex - 1)
     }
 
+    const changeVolume = (event, newValue) => {
+        const audio = audioRef.current
+        setVolume(newValue / 100)
+        audio.volume = volume
+    }
+
     return (
         <div className="music-bottom-component">
             {currentMusic ? (
                 <>
                     <img src={currentMusic.urlThumbnail} alt="" />
                     <div className="music-bottom-component--detail">
-                        <h5>
+                        <h5 style={{width: '15rem', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden'}}>
                             {currentMusic.title.replaceAll(".mp3", "")}
                         </h5>
                         <p>{currentMusic.artist}</p>
@@ -71,6 +82,11 @@ const MusicComponent = ({ index }) => {
                         </div>
                         <div id="next-button">
                             <SkipNextIcon onClick={nextMusic} sx={buttonStyle} />
+                        </div>
+                        <div style={{ display: 'flex', width: '13rem', marginLeft: '2rem', alignItems: 'center' }}>
+                            <VolumeDown sx={smallButtonStyle} />
+                            <Slider aria-label="Volume" defaultValue={50} onChange={changeVolume} sx={{'margin': 'auto 0.5rem'}} />
+                            <VolumeUp sx={smallButtonStyle} />
                         </div>
                     </div>
                 </>
