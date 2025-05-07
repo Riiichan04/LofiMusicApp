@@ -1,11 +1,13 @@
-import '../themes/light.css'
+import '../themes/dark.css'
 import '../index.css'
 import MusicComponent from '../components/MusicComponent'
+import Header from '../components/Header'
 
 const Home = () => {
     return (
         <>
-            <MusicComponent index={0}/>
+            <Header/>
+            <MusicComponent index={2} />
         </>
     )
 }

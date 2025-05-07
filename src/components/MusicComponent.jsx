@@ -3,6 +3,7 @@ import { getMusicInfo } from "../api/musicGetter"
 import '../styles/music-component.css'
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const MusicComponent = ({ index }) => {
     const [isStart, setIsStart] = useState(false)
@@ -50,7 +51,7 @@ const MusicComponent = ({ index }) => {
                         </div>
                     </div>
                 </>
-            ) : <></>}
+            ) : <CircularProgress/>}
         </div>
     )
 }
