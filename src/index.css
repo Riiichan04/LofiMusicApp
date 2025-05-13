@@ -53,6 +53,13 @@ h6 {
 p, span, a {
 	font-size: var(--p);
 }
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
 /* a {
 	font-weight: 500;
 	color: #646cff;

@@ -20,3 +20,13 @@
 #play-button {
     cursor: pointer;
 }
+
+#login-button {
+    cursor: pointer;
+    user-select: none;
+    color: var(--text-color);
+}
+
+#login-button:hover {
+    color: var(--text-color-hover);
+}

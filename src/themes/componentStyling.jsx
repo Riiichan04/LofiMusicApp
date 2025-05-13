@@ -16,5 +16,4 @@ const smallButtonStyle = {
     }
 }
 
-
 export { buttonStyle, smallButtonStyle }
