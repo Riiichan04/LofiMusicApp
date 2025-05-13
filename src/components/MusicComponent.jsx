@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { getMusicInfo } from "../api/musicGetter"
+import { getMusicInfo } from "../api/musicApi"
 import '../styles/music-component.css'
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
