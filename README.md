@@ -1,12 +1,24 @@
-# React + Vite
+# LofiMusicApp - Website for listen lo-fi music and pomodoro
+This is a website for listening lo-fi music and use pomodoro to improve learning and working performances. It's just on a very first stage of development :<
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+### Features
+🎧 **Listen Lo-fi music**: Hear Lo-fi music without ads.
+🍅 **Pomodoro**: Help you focus in working or learning with pomodoro method.
+📄 **Task chart**: Will be helped you manage your task easily and able to use pomodoro for each task in chart.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Technologies
+This website use some popular web technologies:
+- **React.js** - Web design library.
+- **Vite.js** - Build React application.
+- **Material UI** - Build-in components and icons.
+- **Axios** - Fetching API to server.
 
-## Expanding the ESLint configuration
+For server-side's technologies detail, see at [here](https://github.com/Riiichan04/LofiMusicApp_Server).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Running code
+1. Clone this repository
+2. Install dependencies by typing `npm install` in this repo cmd
+3. Type `npm run dev` to run. If you want to build, just type `npm run build`
+
+### License
