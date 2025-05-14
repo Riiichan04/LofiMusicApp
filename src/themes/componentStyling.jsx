@@ -16,5 +16,9 @@ const smallButtonStyle = {
     }
 }
 
+const textButtonStyle = {
+    "color": "var(--text-color)",
+    "cursor": "pointer",
+}
 
-export { buttonStyle, smallButtonStyle }
+export { buttonStyle, smallButtonStyle, textButtonStyle }

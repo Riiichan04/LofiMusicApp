@@ -1,0 +1,35 @@
+#task-table {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25rem;
+    /* background-color: var(--container-color); */
+    padding: 1rem;
+}
+
+#task-table--header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+#add-new-task-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-cta-color);
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 1rem 0.5rem;
+}
+
+#add-new-task-button:hover {
+    background-color: var(--main-cta-color-hover);
+    color: var(--text-color-hover);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.5rem;
+}
