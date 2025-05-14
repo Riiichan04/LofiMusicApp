@@ -30,8 +30,8 @@ const TaskTableComponent = ({ displayState }) => {
                     </div>
                     <div style={{display: 'flex', justifyContent: 'end', marginTop: '2rem', width: '100%'}}>
                         <button id="add-new-task-button">
-                            <AddRoundedIcon sx={textButtonStyle} />
-                            <span>Add a new Task</span>
+                            {/* <AddRoundedIcon sx={textButtonStyle} /> */}
+                            <span>Submit</span>
                         </button>
                     </div>
                 </div>) : <></>}
