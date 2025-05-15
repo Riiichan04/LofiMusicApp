@@ -21,7 +21,8 @@
     background-color: var(--main-cta-color);
     border: 0;
     border-radius: 0.5rem;
-    padding: 1rem 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
 }
 
 #add-new-task-button:hover {
@@ -32,4 +33,5 @@
 input, textarea {
     width: 100%;
     padding: 0.5rem;
+    box-sizing: border-box;
 }
