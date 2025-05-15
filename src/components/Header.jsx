@@ -6,9 +6,9 @@ import { buttonStyle } from "../themes/componentStyling";
 
 const Header = () => {
     return (
-        <div>
+        <header>
             <MenuIcon sx={buttonStyle}/>
-        </div>
+        </header>
     )
 }
 

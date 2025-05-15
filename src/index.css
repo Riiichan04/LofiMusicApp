@@ -74,6 +74,20 @@ a {
 	font-size: var(--p);
 }
 
+footer {
+	width: 100vw;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+footer>* {
+	padding: 1rem;
+}
+
 /* a {
 	font-weight: 500;
 	color: #646cff;
