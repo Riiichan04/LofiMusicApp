@@ -3,10 +3,11 @@ import TableViewRoundedIcon from '@mui/icons-material/TableViewRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import { buttonStyleWithoutHover } from '../themes/componentStyling';
 
-const FeatureBarComponent = () => {
+const FeatureBarComponent = ({taskBoardDisplayStateHandle}) => {
+
     return (
         <div style={{display: 'flex' }}>
-            <div className="feature-detail--element">
+            <div className="feature-detail--element" onClick={() => taskBoardDisplayStateHandle(state => !state)}>
                 <TableViewRoundedIcon sx={buttonStyleWithoutHover} />
                 <p>Task Board</p>
             </div>

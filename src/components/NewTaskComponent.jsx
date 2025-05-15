@@ -1,4 +1,3 @@
-import { useState } from "react"
 import '../styles/task-table-component.css'
 import DriveFileRenameOutlineRoundedIcon from '@mui/icons-material/DriveFileRenameOutlineRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
@@ -6,21 +5,15 @@ import SubjectRoundedIcon from '@mui/icons-material/SubjectRounded';
 import EventRoundedIcon from '@mui/icons-material/EventRounded';
 import { smallButtonStyle } from "../themes/componentStyling";
 
-const TaskTableComponent = ({ displayState }) => {
-    const [display, setDisplay] = useState(displayState)
-
-    const closePopup = (newState) => {
-        setDisplay(newState)
-        displayState = display
-    }
+const TaskTableComponent = ({ displayState, setDisplayState }) => {
 
     return (
         <>
-            {display ? (
+            {displayState ? (
                 <div id="new-task-form">
                     <div id="new-task-form--header">
                         <h4 style={{ margin: 'auto 0', fontWeight: '500' }}>Add a new task</h4>
-                        <CloseRoundedIcon sx={smallButtonStyle} onClick={() => closePopup(false)} />
+                        <CloseRoundedIcon sx={smallButtonStyle} onClick={() => setDisplayState(false)} />
                     </div>
                     <form>
                         <div className="new-task-form--element">
