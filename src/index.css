@@ -22,9 +22,26 @@ body {
 	background-color: var(--web-background);
 }
 
-h1, h2, h3, h4, h5, h6, p, span, a {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a {
 	color: var(--text-color);
 	margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 500;
 }
 
 h1 {
@@ -38,6 +55,7 @@ h2 {
 h3 {
 	font-size: var(--h3);
 }
+
 h4 {
 	font-size: var(--h4);
 }
@@ -50,9 +68,26 @@ h6 {
 	font-size: var(--h6);
 }
 
-p, span, a {
+p,
+span,
+a {
 	font-size: var(--p);
 }
+
+footer {
+	width: 100vw;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+footer>* {
+	padding: 1rem;
+}
+
 /* a {
 	font-weight: 500;
 	color: #646cff;

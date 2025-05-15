@@ -1,0 +1,15 @@
+.feature-detail--element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin: auto 1rem;
+}
+
+.feature-detail--element:hover * {
+    color: var(--text-color-hover);
+}
+
+.feature-detail--element p {
+    user-select: none;
+}

@@ -1,0 +1,53 @@
+input,
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+#new-task-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35rem;
+    /* background-color: var(--container-color); */
+    padding: 1rem;
+}
+
+#new-task-form--header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+#add-new-task-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-cta-color);
+    border: 0;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+#add-new-task-button:hover {
+    background-color: var(--main-cta-color-hover);
+    color: var(--text-color-hover);
+}
+
+.new-task-form--element {
+    display: flex;
+    margin: 1rem auto;
+}
+
+.new-task-form--element>div {
+    width: 10rem;
+    display: flex;
+    padding: 0.25rem 0;
+}
+
+.new-task-form--element>div span {
+    margin: 0 0 0 0.25rem;
+}
