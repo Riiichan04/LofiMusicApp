@@ -1,13 +1,18 @@
 // import { useEffect, useRef, useState } from "react"
 // import { getMusicInfo } from "../api/musicGetter"
 import '../styles/music-component.css'
-import MenuIcon from '@mui/icons-material/Menu';
+import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
+import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import { buttonStyle } from "../themes/componentStyling";
+const Header = ({ theme, setTheme }) => {
 
-const Header = () => {
+
     return (
         <div>
-            <MenuIcon sx={buttonStyle}/>
+            {theme === 'light-theme' ?
+                <LightModeRoundedIcon onClick={() => setTheme('dark-theme')} sx={buttonStyle} /> :
+                <DarkModeRoundedIcon onClick={() => setTheme('light-theme')} sx={buttonStyle} />
+            }
         </div>
     )
 }
