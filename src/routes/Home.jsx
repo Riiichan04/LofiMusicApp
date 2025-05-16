@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import TaskTableComponent from '../components/NewTaskComponent'
 import FeatureBarComponent from '../components/FeatureBarComponent'
 import { useState } from 'react'
+import TaskBoardComponent from '../components/TaskBoardComponent'
 
 
 const Home = () => {
@@ -17,7 +18,7 @@ const Home = () => {
                 <MusicComponent />
                 <FeatureBarComponent taskBoardDisplayStateHandle={setTaskBoardDisplay} />
             </footer>
-            <TaskTableComponent displayState={taskBoardDisplay} setDisplayState={setTaskBoardDisplay}/>
+            <TaskBoardComponent tableDisplayState={taskBoardDisplay} setTableDisplay={setTaskBoardDisplay}/>
         </>
     )
 }

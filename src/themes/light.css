@@ -1,5 +1,8 @@
 :root {
     --web-background: #fafafa;
+    --container-color: #f1f2f4;
+    --foreground-container-color: #fefefe;
+    --background-container-color: #e8e8e8;
     --text-color: #0b1215;
     --text-color-hover: #474747;
     --main-cta-color: #007f87;

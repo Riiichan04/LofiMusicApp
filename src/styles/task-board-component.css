@@ -1,0 +1,53 @@
+#task-board-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70rem;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    background-color: var(--background-container-color);
+}
+
+#task-board-form--header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+#task-board-form--body {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 2rem;
+}
+
+.task-container {
+    border-radius: 5px;
+    padding: 1rem;
+    margin: auto 1rem;
+    background-color: var(--container-color);
+}
+
+.task-container--body {
+    overflow-y: auto;
+    height: 25rem;
+}
+
+.task-card {
+    display: flex;
+    border: solid 2px var(--main-cta-color);
+    border-radius: 5px;
+    width: 15rem;
+    margin: 1rem auto;
+    background-color: var(--foreground-container-color);
+}
+
+.task-card--tag-color {
+    width: 5%;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.task-card--detail {
+    padding: 1rem;
+}
