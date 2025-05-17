@@ -6,12 +6,16 @@ import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import { buttonStyle } from "../themes/componentStyling";
 const Header = ({ theme, setTheme }) => {
 
+    const changeTheme = (newTheme) => {
+        setTheme(newTheme)
+        localStorage.setItem("theme", newTheme)
+    }
 
     return (
         <div>
             {theme === 'light-theme' ?
-                <LightModeRoundedIcon onClick={() => setTheme('dark-theme')} sx={buttonStyle} /> :
-                <DarkModeRoundedIcon onClick={() => setTheme('light-theme')} sx={buttonStyle} />
+                <LightModeRoundedIcon onClick={() => changeTheme('dark-theme')} sx={buttonStyle} /> :
+                <DarkModeRoundedIcon onClick={() => changeTheme('light-theme')} sx={buttonStyle} />
             }
         </div>
     )

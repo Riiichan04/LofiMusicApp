@@ -6,16 +6,17 @@ import ComingSoon from './ComingSoon'
 import { useEffect, useState } from 'react'
 
 const Home = () => {
-    const [theme, setTheme] = useState('dark-theme')
+    const [theme, setTheme] = useState(() => localStorage.getItem("theme") || 'light-theme')
 
     useEffect(() => {
         document.body.classList.remove('light-theme', 'dark-theme')
         document.body.classList.add(theme)
+        localStorage.setItem("theme", theme)
     }, [theme]);
 
     return (
         <>
-            <Header theme={theme} setTheme={setTheme}/>
+            <Header theme={theme} setTheme={setTheme} />
             <MusicComponent />
         </>
     )
