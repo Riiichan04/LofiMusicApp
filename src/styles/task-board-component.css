@@ -1,6 +1,6 @@
 #task-board-form {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70rem;
@@ -25,18 +25,21 @@
     border-radius: 5px;
     padding: 1rem;
     margin: auto 1rem;
+    margin-bottom: 1rem;
     background-color: var(--container-color);
 }
 
 .task-container--body {
+    padding-right: 0.25rem;
+    overflow-x: hidden;
     overflow-y: auto;
-    height: 25rem;
+    height: 22rem;
 }
 
 .task-card {
     display: flex;
-    border: solid 2px var(--main-cta-color);
-    border-radius: 5px;
+    border: solid 1px var(--text-color);
+    border-radius: 4px;
     width: 15rem;
     margin: 1rem auto;
     background-color: var(--foreground-container-color);
@@ -50,4 +53,8 @@
 
 .task-card--detail {
     padding: 1rem;
+}
+
+.add-new-container:hover {
+    background-color: var(--container-color-hover);
 }

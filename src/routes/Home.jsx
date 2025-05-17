@@ -13,12 +13,12 @@ const Home = () => {
 
     return (
         <>
-            <Header/>
+            <Header />
             <footer>
                 <MusicComponent />
                 <FeatureBarComponent taskBoardDisplayStateHandle={setTaskBoardDisplay} />
             </footer>
-            <TaskBoardComponent tableDisplayState={taskBoardDisplay} setTableDisplay={setTaskBoardDisplay}/>
+            <TaskBoardComponent tableDisplayState={taskBoardDisplay} setTableDisplay={setTaskBoardDisplay} />
         </>
     )
 }

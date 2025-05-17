@@ -9,4 +9,5 @@
     --main-cta-color-hover: #006076;
     --sub-cta-color: #9075d8;
     --sub-cta-color-hover: #9f63c4;
+    --footer-gradient: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6));
 }

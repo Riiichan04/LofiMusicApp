@@ -1,10 +1,14 @@
 :root {
     --web-background: #0b1215;
-    --container-color: #beb6b6;
+    --container-color: #313131;
+    --container-color-hover: #2e2e2e;
+    --background-container-color: #212121;
+    --foreground-container-color: #22272b;
     --text-color: #fafafa;
     --text-color-hover: #999999;
     --main-cta-color: #007f87;
     --main-cta-color-hover: #006076;
     --sub-cta-color: #9075d8;
     --sub-cta-color-hover: #9f63c4;
+    --footer-gradient: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
 }

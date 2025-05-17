@@ -15,9 +15,10 @@ const TaskBoardComponent = ({ tableDisplayState, setTableDisplay }) => {
                         <CloseRoundedIcon sx={smallButtonStyle} onClick={() => setTableDisplay(false)} />
                     </div>
                     <div id="task-board-form--body">
-                        <TaskContainer/>
-                        <TaskContainer/>
-                        <TaskContainer/>
+                        <TaskContainer />
+                        <TaskContainer />
+                        <TaskContainer />
+                        <AddNewCardContainer />
                     </div>
                 </div>
             ) : <></>}
@@ -29,12 +30,22 @@ const TaskContainer = () => {
     return (
         <div className="task-container">
             <div className="task-container--header">
-                <h5 style={{ margin: 'auto 0', fontWeight: '500' }}>On going (3)</h5>
+                <h6 style={{ margin: 'auto 0', fontWeight: '500' }}>On going (3)</h6>
             </div>
             <div className="task-container--body">
                 <TaskCard />
                 <TaskCard />
                 <TaskCard />
+            </div>
+        </div>
+    )
+}
+
+const AddNewCardContainer = () => {
+    return (
+        <div className="task-container add-new-container" style={{margin: '0 1rem auto 1rem', cursor: 'pointer'}}>
+            <div className="task-container--header">
+                <h6 style={{ margin: 'auto 0', fontWeight: '500', width: '15rem'}}> + Add new card</h6>
             </div>
         </div>
     )
