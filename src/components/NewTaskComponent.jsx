@@ -41,6 +41,7 @@ const TaskTableComponent = ({ displayState, setDisplayState }) => {
 
 
                             <div style={{ display: 'flex', justifyContent: 'end', marginTop: '2rem', width: '100%' }}>
+                                {/* 4.1.5. Nhập thông tin và click vào nút xác nhận */}
                                 <button id="add-new-task-button">
                                     {/* <AddRoundedIcon sx={textButtonStyle} /> */}
                                     <span style={{ color: '#fafafa' }}>Submit</span>

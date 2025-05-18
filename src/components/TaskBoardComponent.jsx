@@ -16,9 +16,9 @@ const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisp
                         <CloseRoundedIcon sx={smallButtonStyle} onClick={() => setTableDisplay(false)} />
                     </div>
                     <div id="task-board-form--body">
-                        <TaskContainer setNewTaskDisplay={setNewTaskDisplay}/>
-                        <TaskContainer setNewTaskDisplay={setNewTaskDisplay}/>
-                        <TaskContainer setNewTaskDisplay={setNewTaskDisplay}/>
+                        <TaskContainer setNewTaskDisplay={setNewTaskDisplay} />
+                        <TaskContainer setNewTaskDisplay={setNewTaskDisplay} />
+                        <TaskContainer setNewTaskDisplay={setNewTaskDisplay} />
                         <AddNewCardContainer />
                     </div>
                     <div id="task-board-form--footer">
@@ -31,7 +31,7 @@ const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisp
 }
 
 const TaskContainer = ({ setNewTaskDisplay }) => {
-    // 4.1.3. Click vào nút thêm task mới
+    // 4.1.4. Hiển thị form nhập task mới
     const displayNewTask = () => {
         setNewTaskDisplay(state => !state)
     }
@@ -83,8 +83,12 @@ const TaskCard = () => {
 
 const AddNewTaskCard = ({ onClick }) => {
     return (
-        <div className="task-card--detail" style={{ paddingTop: '0', paddingLeft: '0' }} onClick={onClick}>
-            <h6 className="task-card--detail__title" style={{ cursor: 'pointer' }}>+ Add new card</h6>
+        <div
+            className="task-card--detail"
+            style={{ paddingTop: '0', paddingLeft: '0' }}
+            // 4.1.3. Click vào nút thêm task mới
+            onClick={onClick}>
+            <h6 className="task-card--detail__title" style={{ cursor: 'pointer' }}>+ Add new task</h6>
         </div>
     )
 }
