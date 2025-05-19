@@ -6,7 +6,6 @@ import EventRoundedIcon from '@mui/icons-material/EventRounded';
 import { smallButtonStyle } from "../themes/componentStyling";
 
 const TaskTableComponent = ({ displayState, setDisplayState }) => {
-
     return (
         <>
             {displayState ? (
@@ -56,4 +55,43 @@ const TaskTableComponent = ({ displayState, setDisplayState }) => {
 }
 
 
-export default TaskTableComponent
+const TaskListComponent = ({displayState, setDisplayState}) => {
+    return (
+        <>
+            {displayState ? (
+                <div id="new-task-form-container">
+                    <div id="new-task-form">
+                        <div id="new-task-form--header">
+                            <h4 style={{ margin: 'auto 0', fontWeight: '500' }}>Add a new list</h4>
+                            <CloseRoundedIcon sx={smallButtonStyle} onClick={() => setDisplayState(false)} />
+                        </div>
+                        <form>
+                            <div className="new-task-form--element">
+                                <div>
+                                    <DriveFileRenameOutlineRoundedIcon sx={{ color: 'var(--text-color)' }} />
+                                    <span>Name</span>
+                                </div>
+                                <input type="text" name="" id="" />
+                            </div>
+                            <div className="new-task-form--element">
+                                <div>
+                                    <SubjectRoundedIcon sx={{ color: 'var(--text-color)' }} />
+                                    <span>Description</span>
+                                </div>
+                                <textarea name="" id="" style={{ resize: 'none' }} rows={10}></textarea>
+                            </div>
+
+                            <div style={{ display: 'flex', justifyContent: 'end', marginTop: '2rem', width: '100%' }}>
+                                <button id="add-new-task-button">
+                                    <span style={{ color: '#fafafa' }}>Submit</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            ) : <></>}
+        </>
+    )
+}
+
+export {TaskTableComponent, TaskListComponent}

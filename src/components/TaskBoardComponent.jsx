@@ -1,9 +1,8 @@
 import { smallButtonStyle } from "../themes/componentStyling"
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import '../styles/task-board-component.css'
-import TaskTableComponent from "./NewTaskComponent";
 
-const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisplay }) => {
+const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisplay, setNewListDisplay }) => {
     return (
         <>
             {tableDisplayState ? (
@@ -19,7 +18,7 @@ const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisp
                         <TaskContainer setNewTaskDisplay={setNewTaskDisplay} />
                         <TaskContainer setNewTaskDisplay={setNewTaskDisplay} />
                         <TaskContainer setNewTaskDisplay={setNewTaskDisplay} />
-                        <AddNewCardContainer />
+                        <AddNewTaskList onClick={setNewListDisplay}/>
                     </div>
                     <div id="task-board-form--footer">
 
@@ -57,9 +56,12 @@ const TaskContainer = ({ setNewTaskDisplay }) => {
     )
 }
 
-const AddNewCardContainer = () => {
+const AddNewTaskList = ({ onClick }) => {
     return (
-        <div className="task-container add-new-container" style={{ margin: '0 1rem auto 1rem', cursor: 'pointer' }}>
+        <div className="task-container add-new-container"
+            style={{ margin: '0 1rem auto 1rem', cursor: 'pointer' }}
+            onClick={onClick}
+        >
             <div className="task-container--header">
                 <h6 style={{ margin: 'auto 0', fontWeight: '500', width: '15rem' }}> + Add new list</h6>
             </div>
