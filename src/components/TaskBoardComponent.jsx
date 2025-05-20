@@ -3,6 +3,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import '../styles/task-board-component.css'
 import { useState } from "react";
 import { getTaskData } from "../api/taskApi";
+import { Snackbar } from "@mui/material";
 
 const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisplay, setNewListDisplay }) => {
     return (
@@ -34,15 +35,41 @@ const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisp
 const TaskContainer = ({ setNewTaskDisplay }) => {
     const [taskCard, setTaskCard] = useState([])
 
+    //Snackbar for display result
+    const [snackBar, setSnackBar] = useState(false)
+    //4.1.12. Hiển thị kết quả lên popup
+    const displayResultSnackBar = () => setSnackBar(true)
+    const closeSnackBar = () => setSnackBar(false)
+    //TODO: Turn this to a seperate component
+    const action = (
+        <React.Fragment>
+            <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={closeSnackBar}
+            >
+                <CloseIcon fontSize="small" />
+            </IconButton>
+        </React.Fragment>
+    );
+
     const fetchTaskData = async (userId) => {
         const data = await getTaskData(userId)
         data.map(card => <TaskCard cardDetail={card} />)
         setTaskCard(data)
     }
-    
+
     // 4.1.4. Hiển thị form nhập task mới
     const displayNewTask = () => {
         setNewTaskDisplay(state => !state)
+    }
+
+    //4.1.11. Thêm và hiển thị thông tin task mới trong bảng công việc
+    const addNewTaskToList = (cardData) => {
+        const taskComponent = <TaskCard cardDetail={cardData} />
+        setTaskCard(prevItems => [...prevItems, taskComponent])
+        displayResultSnackBar()
     }
 
     return (
@@ -62,6 +89,13 @@ const TaskContainer = ({ setNewTaskDisplay }) => {
                 <div className="task-container--footer">
                     <AddNewTaskCard onClick={displayNewTask} />
                 </div>
+                <Snackbar
+                    open={snackBar}
+                    autoHideDuration={6000}
+                    onClose={closeSnackBar}
+                    message="Your task added successful"
+                    action={action}
+                />
             </div>
         </>
     )
