@@ -1,6 +1,8 @@
 import { smallButtonStyle } from "../themes/componentStyling"
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import '../styles/task-board-component.css'
+import { useState } from "react";
+import { getTaskData } from "../api/taskApi";
 
 const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisplay, setNewListDisplay }) => {
     return (
@@ -18,7 +20,7 @@ const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisp
                         <TaskContainer setNewTaskDisplay={setNewTaskDisplay} />
                         <TaskContainer setNewTaskDisplay={setNewTaskDisplay} />
                         <TaskContainer setNewTaskDisplay={setNewTaskDisplay} />
-                        <AddNewTaskList onClick={setNewListDisplay}/>
+                        <AddNewTaskList onClick={setNewListDisplay} />
                     </div>
                     <div id="task-board-form--footer">
 
@@ -30,6 +32,14 @@ const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisp
 }
 
 const TaskContainer = ({ setNewTaskDisplay }) => {
+    const [taskCard, setTaskCard] = useState([])
+
+    const fetchTaskData = async (userId) => {
+        const data = await getTaskData(userId)
+        data.map(card => <TaskCard cardDetail={card} />)
+        setTaskCard(data)
+    }
+    
     // 4.1.4. Hiển thị form nhập task mới
     const displayNewTask = () => {
         setNewTaskDisplay(state => !state)
@@ -39,7 +49,8 @@ const TaskContainer = ({ setNewTaskDisplay }) => {
         <>
             <div className="task-container">
                 <div className="task-container--header">
-                    <h6 style={{ margin: 'auto 0', fontWeight: '500' }}>On going (3)</h6>
+                    <h6 className="task-container__title" style={{ margin: 'auto 0', fontWeight: '500' }}>On going (3)</h6>
+                    <p className="task-container__description">My on going task</p>
                 </div>
                 <div className="task-container--body">
                     <TaskCard />
@@ -70,7 +81,7 @@ const AddNewTaskList = ({ onClick }) => {
 }
 
 
-const TaskCard = () => {
+const TaskCard = ({ cardDetail }) => {
     return (
         <div className="task-card">
             <div className="task-card--tag-color" style={{ backgroundColor: "#a5bb61" }}>

@@ -3,11 +3,15 @@ import TableViewRoundedIcon from '@mui/icons-material/TableViewRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import { buttonStyleWithoutHover } from '../themes/componentStyling';
 
-const FeatureBarComponent = ({ displayTaskBoard }) => {
+const FeatureBarComponent = ({ displayTaskBoard, displaySetting }) => {
     
     {/* 4.1.2. Hiển thị bảng công việc */ }
     const setTaskTableDisplayState = () => {
         displayTaskBoard(state => !state)
+    }
+
+    const setSettingDisplayState = () => {
+        displaySetting(state => !state)
     }
 
     return (
@@ -16,7 +20,7 @@ const FeatureBarComponent = ({ displayTaskBoard }) => {
                 <TableViewRoundedIcon sx={buttonStyleWithoutHover} />
                 <p>Task Board</p>
             </div>
-            <div className="feature-detail--element">
+            <div className="feature-detail--element" onClick={setSettingDisplayState}>
                 <SettingsRoundedIcon sx={buttonStyleWithoutHover} />
                 <p>Setting</p>
             </div>

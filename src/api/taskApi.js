@@ -8,4 +8,10 @@ async function sendNewTaskData(taskData) {
     return response.data.result
 }
 
-export { sendNewTaskData }
+//In progress
+async function getTaskData(userId) {
+    const response = await axios.get(`${import.meta.env.VITE_SERVER_HOST}/get-task-detail?id=${userId}`)
+    return response.data
+}
+
+export { sendNewTaskData, getTaskData }

@@ -2,14 +2,17 @@ import '../themes/theme.css'
 import '../index.css'
 import MusicComponent from '../components/MusicComponent'
 import Header from '../components/Header'
-import {TaskTableComponent, TaskListComponent} from '../components/NewTaskComponent'
+import { TaskTableComponent, TaskListComponent } from '../components/NewTaskComponent'
 import FeatureBarComponent from '../components/FeatureBarComponent'
 import { useState, useEffect } from 'react'
 import TaskBoardComponent from '../components/TaskBoardComponent'
+import SettingComponent from '../components/SettingComponent'
 
 
 const Home = () => {
     const [taskBoardDisplay, setTaskBoardDisplay] = useState(false)
+    const [settingDisplay, setSettingDisplayState] = useState(false)
+
     const [newTaskDisplayState, setNewTaskDisplayState] = useState(false)
     const [newListDisplayState, setNewListDisplayState] = useState(false)
 
@@ -27,7 +30,7 @@ const Home = () => {
             <footer>
                 <MusicComponent />
                 {/* 4.1.1. Click vào nút bảng công việc */}
-                <FeatureBarComponent displayTaskBoard={setTaskBoardDisplay} />
+                <FeatureBarComponent displayTaskBoard={setTaskBoardDisplay} displaySetting={setSettingDisplayState} />
             </footer>
             <TaskBoardComponent
                 tableDisplayState={taskBoardDisplay} setTableDisplay={setTaskBoardDisplay}
@@ -45,6 +48,10 @@ const Home = () => {
                     displayState={newListDisplayState}
                     setDisplayState={() => setNewListDisplayState(false)} /> :
                 <></>
+            }
+            {settingDisplay ?
+                <SettingComponent displayState={settingDisplay} setDisplayState={setSettingDisplayState} />
+                : <></>
             }
         </>
     )

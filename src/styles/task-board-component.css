@@ -32,6 +32,11 @@
     background-color: var(--container-color);
 }
 
+.task-container__description {
+    font-size: 12px;
+    margin-top: 0.2rem;
+}
+
 .task-container--body {
     padding-right: 0.25rem;
     overflow-x: hidden;
