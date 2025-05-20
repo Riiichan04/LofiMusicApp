@@ -1,9 +1,9 @@
 import { smallButtonStyle } from "../themes/componentStyling"
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import '../styles/task-board-component.css'
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { getTaskData } from "../api/taskApi";
-import { Snackbar } from "@mui/material";
+import { IconButton, Snackbar } from "@mui/material";
 
 //Task board Container
 const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisplay, setNewListDisplay }) => {
@@ -42,18 +42,18 @@ const TaskContainer = ({ setNewTaskDisplay }) => {
     const [snackBar, setSnackBar] = useState(false)
 
     //TODO: Turn this to a seperate component
-    const action = (
-        <React.Fragment>
-            <IconButton
-                size="small"
-                aria-label="close"
-                color="inherit"
-                onClick={closeSnackBar}
-            >
-                <CloseIcon fontSize="small" />
-            </IconButton>
-        </React.Fragment>
-    );
+    // const action = (
+    //     <Fragment>
+    //         <IconButton
+    //             size="small"
+    //             aria-label="close"
+    //             color="inherit"
+    //             onClick={closeSnackBar}
+    //         >
+    //             <CloseIcon fontSize="small" />
+    //         </IconButton>
+    //     </Fragment>
+    // );
 
     //Get task data
     //TODO: Complete this function
@@ -101,7 +101,7 @@ const TaskContainer = ({ setNewTaskDisplay }) => {
                     autoHideDuration={6000}
                     onClose={closeSnackBar}
                     message="Your task added successful"
-                    action={action}
+                    // action={action}
                 />
             </div>
         </>
