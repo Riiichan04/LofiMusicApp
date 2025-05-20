@@ -4,8 +4,7 @@ import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import { buttonStyleWithoutHover } from '../themes/componentStyling';
 
 const FeatureBarComponent = ({ displayTaskBoard, displaySetting }) => {
-    
-    {/* 4.1.2. Hiển thị bảng công việc */ }
+    // 5.1.1.1. Click vào nút bảng công việc
     const setTaskTableDisplayState = () => {
         displayTaskBoard(state => !state)
     }

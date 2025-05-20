@@ -4,8 +4,14 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import SubjectRoundedIcon from '@mui/icons-material/SubjectRounded';
 import EventRoundedIcon from '@mui/icons-material/EventRounded';
 import { smallButtonStyle } from "../themes/componentStyling";
+import { validateNewTaskData } from '../services/taskService';
 
 const TaskTableComponent = ({ displayState, setDisplayState }) => {
+    //5.1.1.3. Nhập thông tin và click vào nút xác nhận
+    const submitNewTask = (taskData) => {
+        validateNewTaskData(taskData)
+    }
+
     return (
         <>
             {displayState ? (
@@ -40,7 +46,6 @@ const TaskTableComponent = ({ displayState, setDisplayState }) => {
 
 
                             <div style={{ display: 'flex', justifyContent: 'end', marginTop: '2rem', width: '100%' }}>
-                                {/* 4.1.5. Nhập thông tin và click vào nút xác nhận */}
                                 <button id="add-new-task-button">
                                     {/* <AddRoundedIcon sx={textButtonStyle} /> */}
                                     <span style={{ color: '#fafafa' }}>Submit</span>
@@ -55,7 +60,7 @@ const TaskTableComponent = ({ displayState, setDisplayState }) => {
 }
 
 
-const TaskListComponent = ({displayState, setDisplayState}) => {
+const TaskListComponent = ({ displayState, setDisplayState }) => {
     return (
         <>
             {displayState ? (
@@ -94,4 +99,4 @@ const TaskListComponent = ({displayState, setDisplayState}) => {
     )
 }
 
-export {TaskTableComponent, TaskListComponent}
+export { TaskTableComponent, TaskListComponent }

@@ -29,11 +29,14 @@ const Home = () => {
             <Header theme={theme} setTheme={setTheme} />
             <footer>
                 <MusicComponent />
-                {/* 4.1.1. Click vào nút bảng công việc */}
-                <FeatureBarComponent displayTaskBoard={setTaskBoardDisplay} displaySetting={setSettingDisplayState} />
+                <FeatureBarComponent 
+                    displayTaskBoard={setTaskBoardDisplay} 
+                    displaySetting={setSettingDisplayState} 
+                />
             </footer>
             <TaskBoardComponent
-                tableDisplayState={taskBoardDisplay} setTableDisplay={setTaskBoardDisplay}
+                tableDisplayState={taskBoardDisplay} 
+                setTableDisplay={setTaskBoardDisplay}
                 setNewTaskDisplay={setNewTaskDisplayState}
                 setNewListDisplay={setNewListDisplayState}
             />

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { getTaskData } from "../api/taskApi";
 import { Snackbar } from "@mui/material";
 
+//Task board Container
 const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisplay, setNewListDisplay }) => {
     return (
         <>
@@ -15,7 +16,9 @@ const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisp
                             <h4 style={{ margin: 'auto 0', fontWeight: '500' }}>Task Board</h4>
                             <p>View and manage your task board.</p>
                         </div>
-                        <CloseRoundedIcon sx={smallButtonStyle} onClick={() => setTableDisplay(false)} />
+                        <CloseRoundedIcon sx={smallButtonStyle}
+                            onClick={() => setTableDisplay(false)}
+                        />
                     </div>
                     <div id="task-board-form--body">
                         <TaskContainer setNewTaskDisplay={setNewTaskDisplay} />
@@ -32,14 +35,12 @@ const TaskBoardComponent = ({ tableDisplayState, setTableDisplay, setNewTaskDisp
     )
 }
 
+//For list
 const TaskContainer = ({ setNewTaskDisplay }) => {
     const [taskCard, setTaskCard] = useState([])
-
     //Snackbar for display result
     const [snackBar, setSnackBar] = useState(false)
-    //4.1.12. Hiển thị kết quả lên popup
-    const displayResultSnackBar = () => setSnackBar(true)
-    const closeSnackBar = () => setSnackBar(false)
+
     //TODO: Turn this to a seperate component
     const action = (
         <React.Fragment>
@@ -54,23 +55,29 @@ const TaskContainer = ({ setNewTaskDisplay }) => {
         </React.Fragment>
     );
 
+    //Get task data
+    //TODO: Complete this function
     const fetchTaskData = async (userId) => {
         const data = await getTaskData(userId)
         data.map(card => <TaskCard cardDetail={card} />)
         setTaskCard(data)
     }
 
-    // 4.1.4. Hiển thị form nhập task mới
+    // 5.1.1.2. Click vào nút thêm task mới
     const displayNewTask = () => {
         setNewTaskDisplay(state => !state)
     }
 
-    //4.1.11. Thêm và hiển thị thông tin task mới trong bảng công việc
+    //5.1.1.9. Thêm và hiển thị thông tin task mới trong bảng công việc
     const addNewTaskToList = (cardData) => {
         const taskComponent = <TaskCard cardDetail={cardData} />
         setTaskCard(prevItems => [...prevItems, taskComponent])
         displayResultSnackBar()
     }
+
+    //5.1.1.10. Hiển thị kết quả lên popup
+    const displayResultSnackBar = () => setSnackBar(true)
+    const closeSnackBar = () => setSnackBar(false)
 
     return (
         <>
@@ -115,6 +122,7 @@ const AddNewTaskList = ({ onClick }) => {
 }
 
 
+// For Card
 const TaskCard = ({ cardDetail }) => {
     return (
         <div className="task-card">
@@ -133,7 +141,6 @@ const AddNewTaskCard = ({ onClick }) => {
         <div
             className="task-card--detail"
             style={{ paddingTop: '0', paddingLeft: '0' }}
-            // 4.1.3. Click vào nút thêm task mới
             onClick={onClick}>
             <h6 className="task-card--detail__title" style={{ cursor: 'pointer' }}>+ Add new task</h6>
         </div>
