@@ -16,5 +16,15 @@ const smallButtonStyle = {
     }
 }
 
+const textButtonStyle = {
+    "color": "var(--text-color)",
+    "cursor": "pointer",
+}
 
-export { buttonStyle, smallButtonStyle }
+const buttonStyleWithoutHover = {
+    "color": "var(--text-color)",
+    "fontSize": "var(--h2)",
+    "cursor": "pointer",
+}
+
+export { buttonStyle, smallButtonStyle, textButtonStyle, buttonStyleWithoutHover }

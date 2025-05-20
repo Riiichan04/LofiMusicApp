@@ -2,10 +2,20 @@ import '../themes/theme.css'
 import '../index.css'
 import MusicComponent from '../components/MusicComponent'
 import Header from '../components/Header'
-import ComingSoon from './ComingSoon'
-import { useEffect, useState } from 'react'
+import { TaskTableComponent, TaskListComponent } from '../components/NewTaskComponent'
+import FeatureBarComponent from '../components/FeatureBarComponent'
+import { useState, useEffect } from 'react'
+import TaskBoardComponent from '../components/TaskBoardComponent'
+import SettingComponent from '../components/SettingComponent'
+
 
 const Home = () => {
+    const [taskBoardDisplay, setTaskBoardDisplay] = useState(false)
+    const [settingDisplay, setSettingDisplayState] = useState(false)
+
+    const [newTaskDisplayState, setNewTaskDisplayState] = useState(false)
+    const [newListDisplayState, setNewListDisplayState] = useState(false)
+
     const [theme, setTheme] = useState(() => localStorage.getItem("theme") || 'light-theme')
 
     useEffect(() => {
@@ -17,9 +27,36 @@ const Home = () => {
     return (
         <>
             <Header theme={theme} setTheme={setTheme} />
-            <MusicComponent />
+            <footer>
+                <MusicComponent />
+                <FeatureBarComponent 
+                    displayTaskBoard={setTaskBoardDisplay} 
+                    displaySetting={setSettingDisplayState} 
+                />
+            </footer>
+            <TaskBoardComponent
+                tableDisplayState={taskBoardDisplay} 
+                setTableDisplay={setTaskBoardDisplay}
+                setNewTaskDisplay={setNewTaskDisplayState}
+                setNewListDisplay={setNewListDisplayState}
+            />
+            {newTaskDisplayState ?
+                <TaskTableComponent
+                    displayState={newTaskDisplayState}
+                    setDisplayState={() => setNewTaskDisplayState(false)} /> :
+                <></>
+            }
+            {newListDisplayState ?
+                <TaskListComponent
+                    displayState={newListDisplayState}
+                    setDisplayState={() => setNewListDisplayState(false)} /> :
+                <></>
+            }
+            {settingDisplay ?
+                <SettingComponent displayState={settingDisplay} setDisplayState={setSettingDisplayState} />
+                : <></>
+            }
         </>
     )
 }
-
 export default Home

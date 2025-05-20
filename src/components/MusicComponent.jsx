@@ -90,6 +90,7 @@ const MusicComponent = ({ index }) => {
                         </div>
                     </div>
                 </>
+                //Will be applied loading to the music detail, not the whole component
             ) : <CircularProgress />}
         </div>
     )
