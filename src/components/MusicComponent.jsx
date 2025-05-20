@@ -30,7 +30,6 @@ const MusicComponent = ({ index }) => {
             setTotalMusic(musicData.length)
             setCurrentMusic(musicData[musicIndex]);
         }
-        console.log(musicIndex)
         //Call it inside useEffect
         fetchMusicData()
     }, [musicIndex])    //useEffect only rerun when musicIndex change
@@ -59,40 +58,43 @@ const MusicComponent = ({ index }) => {
     }
 
     return (
-        <div className="music-bottom-component">
-            {currentMusic ? (
-                <>
-                    <img src={currentMusic.urlThumbnail} alt="" />
-                    <div className="music-bottom-component--detail">
-                        <h5 style={{width: '15rem', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden'}}>
-                            {currentMusic.title.replaceAll(".mp3", "")}
-                        </h5>
-                        <p>{currentMusic.artist}</p>
+        <>
+            <div className="music-bottom-component">
+                {currentMusic ? (
+                    <>
+                        <img src={currentMusic.urlThumbnail} alt="" />
+                        <div className="music-bottom-component--detail">
+                            <h5 style={{ width: '15rem', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
+                                {currentMusic.title.replaceAll(".mp3", "")}
+                            </h5>
+                            <p>{currentMusic.artist}</p>
+                        </div>
+                        <audio ref={audioRef} src={currentMusic.urlMusic}></audio>
+
+                    </>
+                    //Will be applied loading to the music detail, not the whole component
+                ) : <CircularProgress />}
+                <div style={{ display: "flex" }}>
+                    <div id="prev-button">
+                        <SkipPreviousIcon onClick={prevMusic} sx={buttonStyle} />
                     </div>
-                    <audio ref={audioRef} src={currentMusic.urlMusic}></audio>
-                    <div style={{ display: "flex" }}>
-                        <div id="prev-button">
-                            <SkipPreviousIcon onClick={prevMusic} sx={buttonStyle} />
-                        </div>
-                        <div id="play-button">
-                            {isStart ?
-                                <PauseIcon onClick={toggleButton} sx={buttonStyle} /> :
-                                <PlayArrowIcon onClick={toggleButton} sx={buttonStyle} />
-                            }
-                        </div>
-                        <div id="next-button">
-                            <SkipNextIcon onClick={nextMusic} sx={buttonStyle} />
-                        </div>
-                        <div style={{ display: 'flex', width: '13rem', marginLeft: '2rem', alignItems: 'center' }}>
-                            <VolumeDown sx={smallButtonStyle} />
-                            <Slider aria-label="Volume" defaultValue={50} onChange={changeVolume} sx={{'margin': 'auto 0.5rem'}} />
-                            <VolumeUp sx={smallButtonStyle} />
-                        </div>
+                    <div id="play-button">
+                        {isStart ?
+                            <PauseIcon onClick={toggleButton} sx={buttonStyle} /> :
+                            <PlayArrowIcon onClick={toggleButton} sx={buttonStyle} />
+                        }
                     </div>
-                </>
-                //Will be applied loading to the music detail, not the whole component
-            ) : <CircularProgress />}
-        </div>
+                    <div id="next-button">
+                        <SkipNextIcon onClick={nextMusic} sx={buttonStyle} />
+                    </div>
+                    <div style={{ display: 'flex', width: '13rem', marginLeft: '2rem', alignItems: 'center' }}>
+                        <VolumeDown sx={smallButtonStyle} />
+                        <Slider aria-label="Volume" defaultValue={50} onChange={changeVolume} sx={{ 'margin': 'auto 0.5rem' }} />
+                        <VolumeUp sx={smallButtonStyle} />
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
 
