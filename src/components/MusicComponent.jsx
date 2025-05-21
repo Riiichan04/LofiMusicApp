@@ -16,28 +16,31 @@ import { buttonStyle, smallButtonStyle } from "../themes/componentStyling";
 const MusicComponent = ({ index }) => {
     //TODO: Get total music data from father component
     //Just for demo
-    const [volume, setVolume] = useState(0.5)
-    const [totalMusic, setTotalMusic] = useState(0)
-    const [isStart, setIsStart] = useState(false)
+    const [listMusic, setListMusic] = useState([])  //Contain list music
+    const [volume, setVolume] = useState(0.5)   //Current volume
+    const [totalMusic, setTotalMusic] = useState(0) //Music quantity
+    const [isStart, setIsStart] = useState(false)   //Is music playing
     const [currentMusic, setCurrentMusic] = useState(null) //Contain current music detail
-    const [musicIndex, setMusicIndex] = useState(index || 0)
+    const [musicIndex, setMusicIndex] = useState(index || 0)    //Current music index
     const [isRepeat, setRepeat] = useState(false)   //For repeat music
     const [isShuffle, setShuffle] = useState(false) //For shuffle music
     const audioRef = useRef(null)
     // const [listMusic, setListMusic] = useState([])
 
-    //Asynchronous template for fetching API in React   
     useEffect(() => {
         //Set an async function inside useEffect
         const fetchMusicData = async () => {
-            const musicData = await getMusicInfo()
+            //Just recall to api only if listMusic contain nothing
+            const musicData = listMusic.length === 0 ? await getMusicInfo() : listMusic
             setTotalMusic(musicData.length)
             setCurrentMusic(musicData[musicIndex]);
-            // setListMusic(musicData)
+            setListMusic(musicData)
         }
         //Call it inside useEffect
         fetchMusicData()
-    }, [musicIndex])    //useEffect only rerun when musicIndex change
+
+
+    }, [musicIndex, listMusic])    //useEffect only rerun when musicIndex change
 
     const toggleButton = () => {
         const audio = audioRef.current
