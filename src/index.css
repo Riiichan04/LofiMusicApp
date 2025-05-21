@@ -114,7 +114,7 @@ video {
 
 .button-disabled * {
 	color: var(--text-color-disabled);
-	cursor: default;
+	cursor: auto;
 }
 
 /* a {

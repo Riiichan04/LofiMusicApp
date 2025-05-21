@@ -5,13 +5,13 @@ import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import Stack from '@mui/material/Stack';
+import RepeatRoundedIcon from '@mui/icons-material/RepeatRounded';
+import ShuffleRoundedIcon from '@mui/icons-material/ShuffleRounded';
 import Slider from '@mui/material/Slider';
 import VolumeDown from '@mui/icons-material/VolumeDown';
 import VolumeUp from '@mui/icons-material/VolumeUp';
 import CircularProgress from '@mui/material/CircularProgress';
 import { buttonStyle, smallButtonStyle } from "../themes/componentStyling";
-import { IconButton } from "@mui/material";
 
 const MusicComponent = ({ index }) => {
     //TODO: Get total music data from father component
@@ -21,6 +21,8 @@ const MusicComponent = ({ index }) => {
     const [isStart, setIsStart] = useState(false)
     const [currentMusic, setCurrentMusic] = useState(null) //Contain current music detail
     const [musicIndex, setMusicIndex] = useState(index || 0)
+    const [isRepeat, setRepeat] = useState(false)   //For repeat music
+    const [isShuffle, setShuffle] = useState(false) //For shuffle music
     const audioRef = useRef(null)
     // const [listMusic, setListMusic] = useState([])
 
@@ -60,8 +62,20 @@ const MusicComponent = ({ index }) => {
         audio.volume = volume
     }
 
-    const changeNextMusic = () => {
-        setMusicIndex(musicIndex < totalMusic ? musicIndex + 1 : 0)
+    const onMusicEnd = () => {
+        if (isShuffle) {
+            let randomValue = Math.floor(Math.random() * (totalMusic - 1))
+            setMusicIndex(musicIndex === randomValue ? randomValue + 1 : randomValue)
+        }
+        else setMusicIndex(musicIndex + 1 < totalMusic ? musicIndex + 1 : 0)
+    }
+
+    const repeatMusic = () => {
+        setRepeat(state => isShuffle ? state : !state)
+    }
+
+    const shuffleMusic = () => {
+        setShuffle(state => isRepeat ? state : !state)
     }
 
     return (
@@ -77,9 +91,10 @@ const MusicComponent = ({ index }) => {
                             <p>{currentMusic.artist}</p>
                         </div>
                         <audio
+                            loop={isRepeat}
                             ref={audioRef}
                             src={currentMusic.urlMusic}
-                            onEnded={changeNextMusic}
+                            onEnded={onMusicEnd}
                             onLoadedData={() => { if (isStart && currentMusic) audioRef.current.play() }}
                         >
                         </audio>
@@ -99,6 +114,13 @@ const MusicComponent = ({ index }) => {
                     <div id="next-button" className={musicIndex === totalMusic - 1 ? "button-disabled" : ""}>
                         <SkipNextIcon onClick={nextMusic} sx={buttonStyle} />
                     </div>
+                    <div id="repeat-button" className={isRepeat ? "" : "button-disabled"} style={{ margin: 'auto 0.5rem auto 1.5rem' }}>
+                        <RepeatRoundedIcon onClick={repeatMusic} sx={buttonStyle} />
+                    </div>
+                    <div id="shuffle-button" className={isShuffle ? "" : "button-disabled"} style={{ margin: 'auto 0.5rem' }}>
+                        <ShuffleRoundedIcon onClick={shuffleMusic} sx={buttonStyle} />
+                    </div>
+
                     <div style={{ display: 'flex', width: '13rem', marginLeft: '2rem', alignItems: 'center' }}>
                         <VolumeDown sx={smallButtonStyle} />
                         <Slider aria-label="Volume" defaultValue={50} onChange={changeVolume} sx={{ 'margin': 'auto 0.5rem' }} />
