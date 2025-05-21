@@ -5,6 +5,7 @@
     --background-container-color: #e8e8e8;
     --text-color: #0b1215;
     --text-color-hover: #474747;
+    --text-color-disabled: #797979;
     --main-cta-color: #007f87;
     --main-cta-color-hover: #006076;
     --sub-cta-color: #9075d8;
@@ -21,6 +22,7 @@
     --foreground-container-color: #2e2e2e;
     --text-color: #fafafa;
     --text-color-hover: #999999;
+    --text-color-disabled: #555555;
     --main-cta-color: #007f87;
     --main-cta-color-hover: #006076;
     --sub-cta-color: #9075d8;

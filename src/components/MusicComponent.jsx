@@ -11,6 +11,7 @@ import VolumeDown from '@mui/icons-material/VolumeDown';
 import VolumeUp from '@mui/icons-material/VolumeUp';
 import CircularProgress from '@mui/material/CircularProgress';
 import { buttonStyle, smallButtonStyle } from "../themes/componentStyling";
+import { IconButton } from "@mui/material";
 
 const MusicComponent = ({ index }) => {
     //TODO: Get total music data from father component
@@ -21,6 +22,7 @@ const MusicComponent = ({ index }) => {
     const [currentMusic, setCurrentMusic] = useState(null) //Contain current music detail
     const [musicIndex, setMusicIndex] = useState(index || 0)
     const audioRef = useRef(null)
+    // const [listMusic, setListMusic] = useState([])
 
     //Asynchronous template for fetching API in React   
     useEffect(() => {
@@ -29,6 +31,7 @@ const MusicComponent = ({ index }) => {
             const musicData = await getMusicInfo()
             setTotalMusic(musicData.length)
             setCurrentMusic(musicData[musicIndex]);
+            // setListMusic(musicData)
         }
         //Call it inside useEffect
         fetchMusicData()
@@ -57,6 +60,10 @@ const MusicComponent = ({ index }) => {
         audio.volume = volume
     }
 
+    const changeNextMusic = () => {
+        setMusicIndex(musicIndex < totalMusic ? musicIndex + 1 : 0)
+    }
+
     return (
         <>
             <div className="music-bottom-component">
@@ -69,13 +76,18 @@ const MusicComponent = ({ index }) => {
                             </h5>
                             <p>{currentMusic.artist}</p>
                         </div>
-                        <audio ref={audioRef} src={currentMusic.urlMusic}></audio>
+                        <audio
+                            ref={audioRef}
+                            src={currentMusic.urlMusic}
+                            onEnded={changeNextMusic}
+                            onLoadedData={() => { if (isStart && currentMusic) audioRef.current.play() }}
+                        >
+                        </audio>
 
                     </>
-                    //Will be applied loading to the music detail, not the whole component
                 ) : <CircularProgress />}
                 <div style={{ display: "flex" }}>
-                    <div id="prev-button">
+                    <div id="prev-button" className={musicIndex === 0 ? "button-disabled" : ""}>
                         <SkipPreviousIcon onClick={prevMusic} sx={buttonStyle} />
                     </div>
                     <div id="play-button">
@@ -84,7 +96,7 @@ const MusicComponent = ({ index }) => {
                             <PlayArrowIcon onClick={toggleButton} sx={buttonStyle} />
                         }
                     </div>
-                    <div id="next-button">
+                    <div id="next-button" className={musicIndex === totalMusic - 1 ? "button-disabled" : ""}>
                         <SkipNextIcon onClick={nextMusic} sx={buttonStyle} />
                     </div>
                     <div style={{ display: 'flex', width: '13rem', marginLeft: '2rem', alignItems: 'center' }}>

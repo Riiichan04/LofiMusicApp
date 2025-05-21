@@ -4,7 +4,10 @@ const buttonStyle = {
     "cursor": "pointer",
     ":hover": {
         "color": "var(--text-color-hover)",
-    }
+    },
+    // ":disabled": {
+    //     "color": "var(--text-color-disabled)"
+    // }
 }
 
 const smallButtonStyle = {
