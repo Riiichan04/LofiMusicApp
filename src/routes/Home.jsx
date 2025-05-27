@@ -7,6 +7,8 @@ import FeatureBarComponent from '../components/FeatureBarComponent'
 import { useState, useEffect } from 'react'
 import TaskBoardComponent from '../components/TaskBoardComponent'
 import SettingComponent from '../components/SettingComponent'
+// import MusicComponent from '../components/MusicComponent'
+import MusicSearch from '../components/MusicSearch'
 
 
 const Home = () => {
