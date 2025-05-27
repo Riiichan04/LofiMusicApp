@@ -2,9 +2,13 @@ const buttonStyle = {
     "color": "var(--text-color)",
     "fontSize": "var(--h2)",
     "cursor": "pointer",
+    "margin": "auto 0.25rem",
     ":hover": {
         "color": "var(--text-color-hover)",
-    }
+    },
+    // ":disabled": {
+    //     "color": "var(--text-color-disabled)"
+    // }
 }
 
 const smallButtonStyle = {
