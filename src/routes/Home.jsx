@@ -7,7 +7,7 @@ import FeatureBarComponent from '../components/FeatureBarComponent'
 import { useState, useEffect } from 'react'
 import TaskBoardComponent from '../components/TaskBoardComponent'
 import SettingComponent from '../components/SettingComponent'
-import MusicComponent from '../components/MusicComponent'
+// import MusicComponent from '../components/MusicComponent'
 import MusicSearch from '../components/MusicSearch'
 
 
@@ -29,7 +29,6 @@ const Home = () => {
     return (
         <>
             <Header theme={theme} setTheme={setTheme} />
-            <MusicSearch />{}
             <div id="background">
                 <video
                     muted autoPlay loop
