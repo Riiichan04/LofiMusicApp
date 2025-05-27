@@ -20,7 +20,7 @@ const MusicComponent = ({ index }) => {
     // State quản lý âm lượng, mặc định là 0.5 (50%)
     const [volume, setVolume] = useState(0.5)   //Current volume
     // Tổng số bài nhạc lấy từ API
-    const [totalMusic, setTotalMusic] = useState(0 //Music quantity
+    const [totalMusic, setTotalMusic] = useState(0) //Music quantity
     // Biến trạng thái đang phát hay tạm dừng (true = đang phát)
     const [isStart, setIsStart] = useState(false)   //Is music playing
     // Thông tin bài nhạc hiện tại (object chứa chi tiết)
