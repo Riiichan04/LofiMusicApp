@@ -18,8 +18,8 @@ const TaskTableComponent = ({ displayState, setDisplayState, taskContainer }) =>
             userId: 0,
             title: taskName,
             description: taskDescription,
-            startDate: new Date().getTime(),
-            endDate: new Date(endDate).getTime(),
+            startTime: new Date().getTime(),
+            endTime: new Date(endDate).getTime(),
             done: false
         }
 

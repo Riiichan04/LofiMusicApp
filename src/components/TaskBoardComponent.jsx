@@ -103,11 +103,11 @@ const [taskCard, setTaskCard] = useState([])
                         />
                     </div>
                     <div id="task-board-form--body task-container--body" style={{height: '55vh', overflow: 'auto', margin: '1rem'}}>
+                        {/* <TaskCard />
                         <TaskCard />
                         <TaskCard />
                         <TaskCard />
-                        <TaskCard />
-                        <TaskCard />
+                        <TaskCard /> */}
                     </div>
                     <div id="task-board-form--footer">
                         <AddNewTaskCard onClick={setNewTaskDisplay} />
