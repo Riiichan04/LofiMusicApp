@@ -7,6 +7,8 @@ import FeatureBarComponent from '../components/FeatureBarComponent'
 import { useState, useEffect } from 'react'
 import TaskBoardComponent from '../components/TaskBoardComponent'
 import SettingComponent from '../components/SettingComponent'
+// import MusicComponent from '../components/MusicComponent'
+import MusicSearch from '../components/MusicSearch'
 
 
 const Home = () => {
@@ -27,15 +29,21 @@ const Home = () => {
     return (
         <>
             <Header theme={theme} setTheme={setTheme} />
+            <div id="background">
+                <video
+                    muted autoPlay loop
+                    src={import.meta.env.VITE_TEMP_BACKGROUND_URL}>
+                </video>
+            </div>
             <footer>
                 <MusicComponent />
-                <FeatureBarComponent 
-                    displayTaskBoard={setTaskBoardDisplay} 
-                    displaySetting={setSettingDisplayState} 
+                <FeatureBarComponent
+                    displayTaskBoard={setTaskBoardDisplay}
+                    displaySetting={setSettingDisplayState}
                 />
             </footer>
             <TaskBoardComponent
-                tableDisplayState={taskBoardDisplay} 
+                tableDisplayState={taskBoardDisplay}
                 setTableDisplay={setTaskBoardDisplay}
                 setNewTaskDisplay={setNewTaskDisplayState}
                 setNewListDisplay={setNewListDisplayState}

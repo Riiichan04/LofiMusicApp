@@ -4,6 +4,7 @@ import '../styles/music-component.css'
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import { buttonStyle } from "../themes/componentStyling";
+import MusicSearch from './MusicSearch';
 const Header = ({ theme, setTheme }) => {
 
     const changeTheme = (newTheme) => {
@@ -12,11 +13,12 @@ const Header = ({ theme, setTheme }) => {
     }
 
     return (
-        <div>
+        <div style={{display: 'flex'}}>
             {theme === 'light-theme' ?
                 <LightModeRoundedIcon onClick={() => changeTheme('dark-theme')} sx={buttonStyle} /> :
                 <DarkModeRoundedIcon onClick={() => changeTheme('light-theme')} sx={buttonStyle} />
             }
+            <MusicSearch />
         </div>
     )
 }
