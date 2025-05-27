@@ -51,11 +51,11 @@
 /* For task card */
 
 .task-card {
-    display: flex;
+    /* display: flex; */
     border: solid 1px var(--text-color);
     border-radius: 10px;
-    width: 15rem;
-    margin: 1rem auto;
+    /* width: 15rem; */
+    margin: 1rem 0;
     background-color: var(--foreground-container-color);
     cursor: pointer;
 }

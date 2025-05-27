@@ -40,11 +40,16 @@ const Home = () => {
                     displaySetting={setSettingDisplayState}
                 />
             </footer>
-            <TaskBoardComponent
+            {/* <TaskBoardComponent
                 tableDisplayState={taskBoardDisplay}
                 setTableDisplay={setTaskBoardDisplay}
                 setNewTaskDisplay={setNewTaskDisplayState}
                 setNewListDisplay={setNewListDisplayState}
+            /> */}
+            <TaskBoardComponent
+                tableDisplayState={taskBoardDisplay}
+                setTableDisplay={setTaskBoardDisplay}
+                setNewTaskDisplay={setNewTaskDisplayState}
             />
             {newTaskDisplayState ?
                 <TaskTableComponent

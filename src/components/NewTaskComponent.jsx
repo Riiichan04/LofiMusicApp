@@ -7,17 +7,20 @@ import { smallButtonStyle } from "../themes/componentStyling";
 import { validateNewTaskData } from '../services/taskService';
 import { useState } from 'react';
 
-const TaskTableComponent = ({ displayState, setDisplayState }) => {
+const TaskTableComponent = ({ displayState, setDisplayState, taskContainer }) => {
     const [taskName, updateTaskName] = useState("")
     const [taskDescription, updateTaskDescription] = useState("")
     const [endDate, updateEndDate] = useState(null)
-
+    // const container = taskContainer.id
     //5.1.1.3. Nhập thông tin và click vào nút xác nhận
     const submitNewTask = () => {
         const taskData = {
+            userId: 0,
             title: taskName,
             description: taskDescription,
-            endDate: endDate
+            startDate: new Date(),
+            endDate: endDate,
+            done: false
         }
 
         validateNewTaskData(taskData)
@@ -58,7 +61,7 @@ const TaskTableComponent = ({ displayState, setDisplayState }) => {
                                     <EventRoundedIcon sx={{ color: 'var(--text-color)' }} />
                                     <span>Deadline</span>
                                 </div>
-                                <input type="date" name="" id="" onChange={(e) => updateEndDate(e.target.value)} />
+                                <input type="datetime-local" name="" id="" onChange={(e) => updateEndDate(e.target.value)} />
                             </div>
 
                             <div style={{ display: 'flex', justifyContent: 'end', marginTop: '2rem', width: '100%' }}>
