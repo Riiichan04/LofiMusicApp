@@ -15,43 +15,53 @@ import { buttonStyle, smallButtonStyle } from "../themes/componentStyling";
 const MusicComponent = ({ index }) => {
     //TODO: Get total music data from father component
     //Just for demo
+
+    // State quản lý âm lượng, mặc định là 0.5 (50%)
     const [volume, setVolume] = useState(0.5)
+    // Tổng số bài nhạc lấy từ API
     const [totalMusic, setTotalMusic] = useState(0)
+    // Biến trạng thái đang phát hay tạm dừng (true = đang phát)
     const [isStart, setIsStart] = useState(false)
-    const [currentMusic, setCurrentMusic] = useState(null) //Contain current music detail
+    // Thông tin bài nhạc hiện tại (object chứa chi tiết)
+    const [currentMusic, setCurrentMusic] = useState(null)//Contain current music detail
+    // Chỉ số bài nhạc đang phát, khởi tạo bằng prop index hoặc 0
     const [musicIndex, setMusicIndex] = useState(index || 0)
+    // Ref tới thẻ <audio> để điều khiển phát nhạc
     const audioRef = useRef(null)
 
-    //Asynchronous template for fetching API in React   
+    //Asynchronous template for fetching API in React
+    // useEffect chạy khi component mount hoặc khi musicIndex thay đổi
     useEffect(() => {
         //Set an async function inside useEffect
+        // Hàm async để gọi API lấy dữ liệu nhạc
         const fetchMusicData = async () => {
-            const musicData = await getMusicInfo()
-            setTotalMusic(musicData.length)
-            setCurrentMusic(musicData[musicIndex]);
+            const musicData = await getMusicInfo() // gọi API lấy mảng nhạc
+            setTotalMusic(musicData.length)  // lưu tổng số bài nhạc
+            setCurrentMusic(musicData[musicIndex]);// set bài nhạc hiện tại theo index
         }
-        console.log(musicIndex)
+        console.log(musicIndex)// log để debug chỉ số bài nhạc hiện tại
         //Call it inside useEffect
-        fetchMusicData()
-    }, [musicIndex])    //useEffect only rerun when musicIndex change
+        fetchMusicData()  // gọi hàm lấy nhạc
+    }, [musicIndex])//useEffect only rerun when musicIndex change
 
+    // Hàm bật/tắt nhạc khi nhấn nút Play/Pause
     const toggleButton = () => {
         const audio = audioRef.current
         if (!audio) return
         isStart ? audio.pause() : audio.play()
-        setIsStart(!isStart)
+        setIsStart(!isStart) // đổi trạng thái phát/dừng
     }
-
+    // Hàm chuyển bài kế tiếp (nếu chưa phải bài cuối cùng)
     const nextMusic = () => {
         //Temp code
         if (musicIndex < totalMusic - 1) setMusicIndex(musicIndex + 1)
     }
-
+    // Hàm chuyển bài trước (nếu chưa phải bài đầu tiên)
     const prevMusic = () => {
         //Temp code
         if (musicIndex > 0) setMusicIndex(musicIndex - 1)
     }
-
+    // Hàm thay đổi âm lượng khi kéo thanh trượt volume
     const changeVolume = (event, newValue) => {
         const audio = audioRef.current
         setVolume(newValue / 100)
